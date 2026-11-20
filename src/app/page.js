@@ -1,69 +1,161 @@
-import Image from "next/image";
+
+"use client";
+
+import { useState } from "react";
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.js
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-slate-950 text-white">
+
+      {/* Navbar */}
+      <nav className="flex justify-between items-center px-8 py-6 border-b border-slate-800">
+        <h1 className="text-2xl font-bold text-purple-400">
+          Rutuja.
+        </h1>
+
+        <div className="hidden md:flex gap-8">
+          <a href="#home" className="hover:text-purple-400">Home</a>
+          <a href="#about" className="hover:text-purple-400">About</a>
+          <a href="#skills" className="hover:text-purple-400">Skills</a>
+          <a href="#projects" className="hover:text-purple-400">Projects</a>
+          <a href="#contact" className="hover:text-purple-400">Contact</a>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <button
+          className="md:hidden text-purple-400 text-2xl"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          ☰
+        </button>
+      </nav>
+
+      {menuOpen && (
+        <div className="md:hidden flex flex-col gap-4 px-8 py-4">
+          <a href="#home" onClick={() => setMenuOpen(false)}>Home</a>
+          <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+          <a href="#skills" onClick={() => setMenuOpen(false)}>Skills</a>
+          <a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a>
+          <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
         </div>
-      </main>
-    </div>
+      )}
+
+      {/* Home */}
+      <section id="home" className="min-h-[80vh] flex flex-col justify-center items-center text-center px-6">
+        <p className="text-purple-400 text-lg mb-4">
+          Hello, Welcome to My Portfolio
+        </p>
+
+        <h1 className="text-5xl md:text-7xl font-bold mb-5">
+          I'm <span className="text-purple-400">Rutuja Lohar</span>
+        </h1>
+
+        <h2 className="text-2xl text-slate-300 mb-6">
+          Professional | Technology Learner
+        </h2>
+
+        <p className="max-w-2xl text-slate-400 text-lg mb-8">
+          MCA Graduate and Working Professional.
+          Passionate about learning new technologies
+          and building creative web applications.
+        </p>
+
+        <a href="#about"
+          className="bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded-full font-semibold">
+          Explore More
+        </a>
+      </section>
+
+      {/* About */}
+      <section id="about" className="py-20 px-8 bg-slate-900 text-center">
+        <h2 className="text-4xl font-bold mb-8">
+          About <span className="text-purple-400">Me</span>
+        </h2>
+
+        <p className="max-w-3xl mx-auto text-slate-300 text-lg leading-8">
+          My name is Rutuja Lohar. I have completed my
+          Master of Computer Applications (MCA).
+          I am a working professional with a passion
+          for technology and continuous learning.
+          I enjoy exploring new technologies,
+          improving my technical skills and creating
+          useful web applications.
+        </p>
+      </section>
+
+      {/* Skills */}
+      <section id="skills" className="py-20 px-8 text-center">
+        <h2 className="text-4xl font-bold mb-10">
+          My <span className="text-purple-400">Skills</span>
+        </h2>
+
+        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-5">
+          {[
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "React.js",
+            "Next.js",
+            "Node.js",
+            "PostgreSQL",
+            "Git & GitHub",
+            "Tailwind CSS"
+          ].map((skill) => (
+            <div key={skill}
+              className="bg-slate-900 border border-purple-500/30 p-6 rounded-xl hover:bg-purple-900 transition">
+              <h3 className="text-xl font-semibold">{skill}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Projects */}
+      <section id="projects" className="py-20 px-8 bg-slate-900 text-center">
+        <h2 className="text-4xl font-bold mb-10">
+          My <span className="text-purple-400">Projects</span>
+        </h2>
+
+        <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-6">
+          <div className="bg-slate-950 p-7 rounded-xl border border-slate-700">
+            <h3 className="text-xl font-bold text-purple-400 mb-3">
+              E-Commerce Website
+            </h3>
+            <p className="text-slate-400">
+              A simple online shopping application using Next.js and PostgreSQL.
+            </p>
+          </div>
+
+          <div className="bg-slate-950 p-7 rounded-xl border border-slate-700">
+            <h3 className="text-xl font-bold text-purple-400 mb-3">
+              Complaint Management System
+            </h3>
+            <p className="text-slate-400">
+              A web application to submit and manage customer complaints.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-20 px-8 text-center">
+        <h2 className="text-4xl font-bold mb-6">
+          Contact <span className="text-purple-400">Me</span>
+        </h2>
+
+        <p className="text-slate-300 mb-4">
+          Thank you for visiting my portfolio!
+        </p>
+
+        <p className="text-purple-400">
+          Rutuja Lohar
+        </p>
+      </section>
+
+      <footer className="text-center py-6 border-t border-slate-800 text-slate-500">
+        © 2026 Rutuja Lohar. All Rights Reserved.
+      </footer>
+
+    </main>
   );
 }
